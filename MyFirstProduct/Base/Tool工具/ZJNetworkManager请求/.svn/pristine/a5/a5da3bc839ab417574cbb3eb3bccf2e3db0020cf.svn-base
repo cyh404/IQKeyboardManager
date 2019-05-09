@@ -1,0 +1,28 @@
+//
+//  SRNetwork.h
+//  SunrayWoman
+//
+//  Created by 小面包oo on 15/10/6.
+//  Copyright (c) 2015年 zijing. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "AFNetworking.h"
+
+@interface SRNetwork : NSObject
+
+typedef void (^HttpResponseSuccessBlock) (NSDictionary *response);
+
+/**
+ *  请求失败后的响应及错误实例
+ *
+ *  @param operation 响应
+ *  @param erro      错误实例
+ */
+typedef void (^HttpResponseErrorBlock) (AFHTTPRequestOperation *operation,NSError *error,NSString *description);
+
+- (void)requestWithURL:(NSString*)URLString parameter:(NSDictionary *)parameter success:(HttpResponseSuccessBlock)successBlock error:(HttpResponseErrorBlock)errorBlock;
++ (instancetype)instanceManager;
+
+
+@end
